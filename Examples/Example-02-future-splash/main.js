@@ -5,7 +5,7 @@
 // http://park12.wakwak.com/~shp/lc/et/en_aics_script.html
 
 project.currentStyle = {
-	fillColor: 'white'
+	fillColor: 'gold' //color changed
 
 
 	
@@ -29,7 +29,7 @@ for (var i = 0, l = ballPositions.length; i < l; i++) {
 
 var largeCircle = new Path.Circle({
 	center: [676, 433],
-	radius: 100
+	radius: 300
 });
 circlePaths.push(largeCircle);
 
