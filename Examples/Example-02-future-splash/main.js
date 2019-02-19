@@ -1,3 +1,37 @@
+
+//Code from paper.js example "Meta Balls" (changed a bit by Lin)
+
+// Ported from original Metaball script by SATO Hiroyuki
+// http://park12.wakwak.com/~shp/lc/et/en_aics_script.html
+
+project.currentStyle = {
+	fillColor: 'white'
+	
+};
+
+var ballPositions = [];
+
+
+var handle_len_rate = 2.4;
+var circlePaths = [];
+var radius = 50;
+for (var i = 0, l = ballPositions.length; i < l; i++) {
+	var circlePath = new Path.Circle({
+		center: ballPositions[i],
+		radius: 50
+	});
+	circlePaths.push(circlePath);
+}
+
+var largeCircle = new Path.Circle({
+	center: [676, 433],
+	radius: 100
+});
+circlePaths.push(largeCircle);
+
+
+
+//Code from exemple "future splash"
 // Code ported to Paper.js from http://the389.com/9/1/
 // with permission.
 
@@ -36,7 +70,7 @@ Spring.prototype.update = function() {
 
 function createPath(strength) {
 	var path = new Path({
-		fillColor: 'black'
+		fillColor: 'aqua' //Color changed from black 
 	});
 	springs = [];
 	for (var i = 0; i <= values.amount; i++) {
@@ -81,6 +115,9 @@ function onMouseMove(event) {
 			next.y += (y - next.y) / 24;
 		}
 	}
+//Code added from "Meta Balls" example
+	largeCircle.position = event.point;
+	generateConnections(circlePaths);
 }
 
 function onFrame(event) {
@@ -106,5 +143,25 @@ function onKeyDown(event) {
 	if (event.key == 'space') {
 		path.fullySelected = !path.fullySelected;
 		path.fillColor = path.fullySelected ? null : 'black';
+
 	}
 }
+
+//Code added/combined/experimented with by Lin 
+
+
+//Adds sound on click (code outside the event listener so that the sound will finish before you can click again)
+var audio = new Audio('soundonclick.mp3');
+
+//Click event listener added to click 
+document.addEventListener("click", function(){
+
+//Audio plays on click
+	audio.play();
+		
+}); 
+
+
+
+
+
