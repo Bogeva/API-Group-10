@@ -6,9 +6,13 @@
 
 project.currentStyle = {
 	fillColor: 'white'
+
+
+	
 	
 };
 
+//extra balls on tha canvas removed 
 var ballPositions = [];
 
 
