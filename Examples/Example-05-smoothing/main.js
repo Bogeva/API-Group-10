@@ -1,10 +1,16 @@
 var width, height, center;
-var points = 10;
+var points = 20;
 var smooth = true;
 var path = new Path();
 var mousePos = view.center / 2;
 var pathHeight = mousePos.y;
-path.fillColor = 'black';
+path.fillColor = {
+	gradient: {
+		stops: [['white', 0.2],['black',0.2] ]
+	}, 
+	origin: [0,0],
+	destination: [0,1080]
+}
 initializePath();
 
 function initializePath() {

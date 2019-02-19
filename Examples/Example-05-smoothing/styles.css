@@ -3,6 +3,7 @@ body {
     margin: 0;
     overflow: hidden;
     height: 100%;
+    background-image: url("http://mobilemedicalcare.org/wp-content/uploads/2015/11/blue-sky-1330598792xLu.jpg")
 }
 
 /* Scale canvas with resize attribute to full size */
