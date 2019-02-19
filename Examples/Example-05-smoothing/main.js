@@ -1,9 +1,12 @@
+//The base code was taken from the Smoothing example on Paperjs.org
+//The original code was changed by Snezhana 
 var width, height, center;
 var points = 20;
 var smooth = true;
 var path = new Path();
 var mousePos = view.center / 2;
 var pathHeight = mousePos.y;
+//In the following code the path is filled with gradient
 path.fillColor = {
 	gradient: {
 		stops: [['white', 0.3],['black',0.3] ]
@@ -53,6 +56,8 @@ function onMouseDown(event) {
 			segment.handleIn = segment.handleOut = null;
 		}
 	}
+	//when mouse is clicked and held we want the 'mountains' to 
+	//change color 
 	path.fillColor = {
 		gradient: {
 			stops: [['#de6262', 0.3],['#ffb88c',0.5] ]
@@ -62,6 +67,8 @@ function onMouseDown(event) {
 	}
 }
 
+//I added the following Event in order to change the color
+//fill of the path, back to original
 function onMouseUp(event){
 	path.fillColor = {
 		gradient: {
