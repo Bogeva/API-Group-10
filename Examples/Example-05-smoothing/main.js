@@ -6,7 +6,7 @@ var mousePos = view.center / 2;
 var pathHeight = mousePos.y;
 path.fillColor = {
 	gradient: {
-		stops: [['white', 0.2],['black',0.2] ]
+		stops: [['white', 0.3],['black',0.3] ]
 	}, 
 	origin: [0,0],
 	destination: [0,1080]
@@ -52,6 +52,23 @@ function onMouseDown(event) {
 			var segment = path.segments[i];
 			segment.handleIn = segment.handleOut = null;
 		}
+	}
+	path.fillColor = {
+		gradient: {
+			stops: [['#de6262', 0.3],['#ffb88c',0.5] ]
+		}, 
+		origin: [0,0],
+		destination: [0,1080]
+	}
+}
+
+function onMouseUp(event){
+	path.fillColor = {
+		gradient: {
+			stops: [['white', 0.3],['black',0.3] ]
+		}, 
+		origin: [0,0],
+		destination: [0,1080]
 	}
 }
 
