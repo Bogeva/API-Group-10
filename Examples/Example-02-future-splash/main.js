@@ -28,10 +28,21 @@ for (var i = 0, l = ballPositions.length; i < l; i++) {
 }
 
 var largeCircle = new Path.Circle({
-	center: [676, 433],
-	radius: 300
+	center: [600, 500],
+	radius: 450
 });
+
+//DELETE THIS BEFORE HANDIN?
+//Second circle that follows mouse added
+var largeCircle2 = new Path.Circle({
+	center: [676, 433],
+	radius: 50
+	
+});
+
 circlePaths.push(largeCircle);
+//DELETE THIS BEFORE HAND IN
+circlePaths.push(largeCircle2);
 
 
 
@@ -74,7 +85,7 @@ Spring.prototype.update = function() {
 
 function createPath(strength) {
 	var path = new Path({
-		fillColor: 'aqua' //Color changed from black 
+		fillColor: 'Aqua' //Color changed from black 
 	});
 	springs = [];
 	for (var i = 0; i <= values.amount; i++) {
@@ -119,9 +130,14 @@ function onMouseMove(event) {
 			next.y += (y - next.y) / 24;
 		}
 	}
-//Code added from "Meta Balls" example
-	largeCircle.position = event.point;
-	generateConnections(circlePaths);
+//Code to make image follow the mouse 
+	var fish = document.getElementById("fish");
+
+	//Set fish style left in css to the value x of the cursor
+	fish.style.left = event.point.x + "px";
+	//Set fish style top in css to the value y of the cursor
+	fish.style.top = event.point.y + "px";
+
 }
 
 function onFrame(event) {
@@ -142,16 +158,6 @@ function updateWave(path) {
 	}
 	path.smooth({ type: 'continuous' });
 }
-
-function onKeyDown(event) {
-	if (event.key == 'space') {
-		path.fullySelected = !path.fullySelected;
-		path.fillColor = path.fullySelected ? null : 'black';
-
-	}
-}
-
-//Code added/combined/experimented with by Lin 
 
 
 //Adds sound on click (code outside the event listener so that the sound will finish before you can click again)
