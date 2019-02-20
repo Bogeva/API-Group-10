@@ -1,17 +1,22 @@
 var voronoi =  new Voronoi();
-var sites = generateBeeHivePoints(view.size / 200, true);
+var sites = generateBeeHivePoints(view.size / 50, true); //size of each cell
 var bbox, diagram;
 var oldSize = view.size;
-var spotColor = new Color('red');
+var spotColor = new Color('rgb(2,30,2, 0.7)'); //color of cell
 var mousePos = view.center;
 var selected = false;
 
 onResize();
 
+function getRandomColor () {
+	var hex = Math.floor(Math.random() * 0xFFFFFF);
+	return "#" + ("000000" + hex.toString(16)).substr(-6);
+  } //trying to apply the animation to randomly change color on click
+
 function onMouseDown(event) {
 	sites.push(event.point);
 	renderDiagram();
-}
+}//event - listens when user has mouse over element 
 
 function onMouseMove(event) {
 	mousePos = event.point;
@@ -19,7 +24,7 @@ function onMouseMove(event) {
 		sites.push(event.point);
 	sites[sites.length - 1] = event.point;
 	renderDiagram();
-}
+}//event - when user moves mouse within a cell/div
 
 function renderDiagram() {
 	project.activeLayer.children = [];
@@ -41,7 +46,7 @@ function renderDiagram() {
 			}
 		}
 	}
-}
+}// creates the cells on the html page
 
 function removeSmallBits(path) {
 	var averageLength = path.length / path.segments.length;
@@ -62,20 +67,21 @@ function generateBeeHivePoints(size, loose) {
 	var col = view.size / size;
 	for(var i = -1; i < size.width + 1; i++) {
 		for(var j = -1; j < size.height + 1; j++) {
-			var point = new Point(i, j) / new Point(size) * view.size + col / 2;
+			var point = new Point(i, j) / new Point(size) * view.size + col / 3;
 			if(j % 2)
 				point += new Point(col.width / 2, 0);
 			if(loose)
-				point += (col / 4) * Point.random() - col / 4;
+				point += (col / 2) * Point.random() - col / 4; //how to edit columns (make them look randomized)
 			points.push(point);
 		}
 	}
 	return points;
 }
 function createPath(points, center) {
-	var path = new Path();
-	if (!selected) { 
-		path.fillColor = spotColor;
+	var path = new Path(); //fill base color instead of using spotColor
+	if (!selected) {
+		// path.fillColor = spotColor; 
+		path.fillColor = {hue: Math.random() * 360, saturation: 1, brightness: 1};
 	} else {
 		path.fullySelected = selected;
 	}
@@ -91,10 +97,10 @@ function createPath(points, center) {
 			handleOut: vector
 		});
 	}
-	path.scale(0.95);
+	path.scale(0.95);  
 	removeSmallBits(path);
 	return path;
-}
+}//changes the width between cells
 
 function onResize() {
 	var margin = 20;
@@ -117,3 +123,7 @@ function onKeyDown(event) {
 		renderDiagram();
 	}
 }
+
+// function onFrame(event){
+// path.fillColor.hue += 1;
+// }
