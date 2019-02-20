@@ -1,5 +1,5 @@
 var voronoi =  new Voronoi();
-var sites = generateBeeHivePoints(view.size / 50, true); //size of each cell
+var sites = generateBeeHivePoints(view.size / 60, true); //size of each cell
 var bbox, diagram;
 var oldSize = view.size;
 var spotColor = new Color('rgb(2,30,2, 0.7)'); //color of cell
