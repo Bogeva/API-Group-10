@@ -3,9 +3,9 @@ var mousePoint = view.center;
 	
 //Variables for sliders
 var amount = 7;
-var twistNumber = 20;
+var twistNumber = 10;
 var speedNumber = 5;
-var roundnessNumber = 0;
+var roundnessNumber = 5;
 
 //Shape boolean
 var isStar = false;
@@ -20,7 +20,7 @@ function createShapes() {
 		//Conditional checkbox shape
 		if (isStar === true) {
 			//Measurements of star
-			var path = new Path.Star(mousePoint, 5, 15, 30);
+			var path = new Path.Star(mousePoint, roundnessNumber, 15, 30);
 			//Scale on canvas
 			var scale = (1 - i / amount) * 10;
 			path.scale(scale);
