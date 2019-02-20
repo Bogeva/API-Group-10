@@ -6,9 +6,30 @@
 <!-- Load the Paper.js library -->
 <script type="text/javascript" src="/node_modules/paper/dist/paper-full.js"></script>
 <!-- Load external PaperScript and associate it with myCanvas -->
-<script type="text/paperscript" src="/Examples/Example-03-rounded-rectangles/mainStar.js" canvas="myCanvas">
+<script type="text/paperscript" src="/Examples/Example-03-rounded-rectangles/main.js" canvas="myCanvas">
 </script>
 </head>
 <body style="background-color: #f794e8";>
     <canvas id="myCanvas" resize></canvas>
-</body>
+       <div class ="box">
+           <label for="Speed">Speed</label>
+           <input name="Speed" type="range" min="1" max="15" value="5" class="slider"
+            id="speed-number"><br/><br/>
+        </div>
+        <div class ="box1">
+            <label for="Twist">Twist</label>
+            <input name="Twist" type="range" min="10" max="40"
+            value="10" class="slider1" id="twist-number"><br/>
+        </div>
+        <div class ="box2">
+            <label for="Roundness" id="label">Roundness/points</label>
+            <input name="Roundness" type="range" min="0"
+            max="12" value="5" class="slider2" id="roundness-number"><br/>
+        </div>
+        <div class ="box3">
+            <label class="container">Change shape
+                <input type="checkbox" id="shape-box"><span class="checkmark"></span>
+            </label>
+        </div>
+    </body>
+</html>
