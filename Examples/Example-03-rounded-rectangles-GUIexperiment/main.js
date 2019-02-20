@@ -2,6 +2,9 @@
 var mousePoint = view.center;
 //Amount of layers
 var amount = 7;
+var twistNumber = 5;
+var speedNumber = 5;
+var roundnessNumber = 0;
 //Colors of layers
 var colors = ['#5942f4', '#a041f4', '#d63ff4', '#f23ad6', 'orange', 'white', 'green']
 
@@ -10,7 +13,7 @@ for (var i = 0; i < amount; i++) {
 	var rect = new Rectangle([0, 0], [25, 25]);
 	rect.center = mousePoint;
 	//Roundness of square-corners
-	var path = new Path.Rectangle(rect, 0);
+	var path = new Path.Rectangle(rect, roundnessNumber);
 	//Amounts of colors
 	path.fillColor = colors[i % 7];
 	//Scale on canvas
@@ -30,7 +33,7 @@ function onMouseDown(event) {
 		var rect = new Rectangle([0, 0], [25, 25]);
 		rect.center = mousePoint;
 		//Roundness of square-corners
-		var path = new Path.Rectangle(rect, 0);
+		var path = new Path.Rectangle(rect, roundnessNumber);
 		//Amounts of colors
 		path.fillColor = colors[i % 7];
 		//Scale on canvas
@@ -47,9 +50,27 @@ function onFrame(event) {
 		//Movement of the square
 		var delta = (mousePoint - item.position) / (i + 5);
 		//Rotate speed
-		item.rotate(Math.sin((event.count + i) / 10) * 7);
+		item.rotate(Math.sin((event.count + i) / twistNumber) * speedNumber);
 		if (delta.length > 0.1)
 			item.position += delta;
 			
 	}
+}
+
+
+var speedSlider = document.getElementById("speed-number");
+var twistSlider = document.getElementById("twist-number");
+var roundnessSlider = document.getElementById("roundness-number");
+
+speedSlider.addEventListener("change", handleSliders, false);
+twistSlider.addEventListener("change", handleSliders, false);
+roundnessSlider.addEventListener("change", handleRoundnessSlider, false);
+
+function handleSliders(event) {
+    twistNumber = twistSlider.value;
+	speedNumber = speedSlider.value;
+}
+
+function handleRoundnessSlider(event) {
+	roundnessNumber = roundnessSlider.value;
 }
