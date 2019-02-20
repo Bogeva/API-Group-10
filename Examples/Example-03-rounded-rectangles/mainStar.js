@@ -1,10 +1,11 @@
-//Where it starts on canvas 
+//Where stack starts on canvas 
 var mousePoint = view.center;
 //Amount of layers
 var amount = 7;
 //Colors of layers
 var colors = ['#5942f4', '#a041f4', '#d63ff4', '#f23ad6', 'orange', 'white', 'green']
 
+//First loop
 for (var i = 0; i < amount; i++) {
 	//Measurements of star
 	var path = new Path.Star(mousePoint, 5, 15, 30);
@@ -15,12 +16,15 @@ for (var i = 0; i < amount; i++) {
 	path.scale(scale);
 }
 
+//The stack following the mouse
 function onMouseMove(event) {
 	mousePoint = event.point;
 }
 
+//When clicking the mouse
 function onMouseDown(event) {
 	project.activeLayer.children = [];
+	//Adding 7 layers each time the mouse is clicked
 	amount = amount + 7;
 	for (var i = 0; i < amount; i++) {
 		//Measurements of star
@@ -34,6 +38,7 @@ function onMouseDown(event) {
 	console.log(amount);
 }
 
+//Animation
 var children = project.activeLayer.children;
 function onFrame(event) {
 	for (var i = 0, l = children.length; i < l; i++) {
