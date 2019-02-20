@@ -13,30 +13,9 @@ var isStar = false;
 //Colors of layers
 var colors = ['#5942f4', '#a041f4', '#d63ff4', '#f23ad6', 'orange', 'white', 'green']
 
-//First loop
-for (var i = 0; i < amount; i++) {
-	//Measurements on rectangle
-	var rect = new Rectangle([0, 0], [25, 25]);
-	rect.center = mousePoint;
-	//Roundness of square-corners
-	var path = new Path.Rectangle(rect, roundnessNumber);
-	//Amounts of colors
-	path.fillColor = colors[i % 7];
-	//Scale on canvas
-	var scale = (1 - i / amount) * 20;
-	path.scale(scale);
-}
-
-//The stack following the mouse
-function onMouseMove(event) {
-	mousePoint = event.point;
-}
-
-//When clicking the mouse
-function onMouseDown(event) {
-	project.activeLayer.children = [];
-	//Adding 7 layers each time the mouse is clicked
-	amount = amount + 7;
+//Looping draw function
+function createShapes() {
+    project.activeLayer.children = [];
 	for (var i = 0; i < amount; i++) {
 		//Conditional checkbox shape
 		if (isStar === true) {
@@ -58,8 +37,22 @@ function onMouseDown(event) {
 		//Amounts of colors
 		path.fillColor = colors[i % 7];
 	}
+}
+
+//First loop
+createShapes();
+
+//The stack following the mouse
+function onMouseMove(event) {
+	mousePoint = event.point;
+}
+
+//When clicking the mouse
+function onMouseDown(event) {
+	//Adding 7 layers each time the mouse is clicked
+	amount = amount + 7;
+	createShapes();
 	console.log(amount);
-	console.log(isStar);
 }
 
 //Animation
@@ -95,8 +88,10 @@ function handleSliders(event) {
 
 function handleRoundnessSlider(event) {
 	roundnessNumber = roundnessSlider.value;
+	createShapes();
 }
 
 function handleCheckbox(event) {
 	isStar = shapeCheckbox.checked;
+	createShapes();
 }
