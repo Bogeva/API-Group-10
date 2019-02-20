@@ -3,9 +3,12 @@ var mousePoint = view.center;
 	
 //Variables for sliders
 var amount = 7;
-var twistNumber = 5;
+var twistNumber = 20;
 var speedNumber = 5;
 var roundnessNumber = 0;
+
+//Shape boolean
+var isStar = false;
 
 //Colors of layers
 var colors = ['#5942f4', '#a041f4', '#d63ff4', '#f23ad6', 'orange', 'white', 'green']
@@ -35,18 +38,28 @@ function onMouseDown(event) {
 	//Adding 7 layers each time the mouse is clicked
 	amount = amount + 7;
 	for (var i = 0; i < amount; i++) {
-		//Measurements on rectangle
-		var rect = new Rectangle([0, 0], [25, 25]);
-		rect.center = mousePoint;
-		//Roundness of square-corners
-		var path = new Path.Rectangle(rect, roundnessNumber);
+		//Conditional checkbox shape
+		if (isStar === true) {
+			//Measurements of star
+			var path = new Path.Star(mousePoint, 5, 15, 30);
+			//Scale on canvas
+			var scale = (1 - i / amount) * 10;
+			path.scale(scale);
+		} else {
+			//Measurements on rectangle
+			var rect = new Rectangle([0, 0], [25, 25]);
+			rect.center = mousePoint;
+			//Roundness of square-corners
+			var path = new Path.Rectangle(rect, roundnessNumber);
+			//Scale on canvas
+			var scale = (1 - i / amount) * 20;
+			path.scale(scale);
+		}
 		//Amounts of colors
 		path.fillColor = colors[i % 7];
-		//Scale on canvas
-		var scale = (1 - i / amount) * 20;
-		path.scale(scale);
 	}
 	console.log(amount);
+	console.log(isStar);
 }
 
 //Animation
@@ -64,14 +77,16 @@ function onFrame(event) {
 	}
 }
 
-//Sliders
+//Sliders/checkbox
 var speedSlider = document.getElementById("speed-number");
 var twistSlider = document.getElementById("twist-number");
 var roundnessSlider = document.getElementById("roundness-number");
+var shapeCheckbox = document.getElementById("shape-box");
 
 speedSlider.addEventListener("change", handleSliders, false);
 twistSlider.addEventListener("change", handleSliders, false);
 roundnessSlider.addEventListener("change", handleRoundnessSlider, false);
+shapeCheckbox.addEventListener("change", handleCheckbox, false);
 
 function handleSliders(event) {
     twistNumber = twistSlider.value;
@@ -80,4 +95,8 @@ function handleSliders(event) {
 
 function handleRoundnessSlider(event) {
 	roundnessNumber = roundnessSlider.value;
+}
+
+function handleCheckbox(event) {
+	isStar = shapeCheckbox.checked;
 }

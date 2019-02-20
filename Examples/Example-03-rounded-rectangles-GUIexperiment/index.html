@@ -6,17 +6,30 @@
 <!-- Load the Paper.js library -->
 <script type="text/javascript" src="/node_modules/paper/dist/paper-full.js"></script>
 <!-- Load external PaperScript and associate it with myCanvas -->
-<script type="text/paperscript" src="/Examples/Example-03-rounded-rectangles-GUIexperiment/mainStar.js" canvas="myCanvas">
+<script type="text/paperscript" src="/Examples/Example-03-rounded-rectangles-GUIexperiment/main.js" canvas="myCanvas">
 </script>
 </head>
 <body style="background-color: #f794e8";>
-    <canvas id="myCanvas" width="1000" height="500"></canvas>
-       <label for="Speed">Speed</label><input name="Num" type="range" min="1" max="15" value="1"
-            id="speed-number"><br/><br />
-        <label for="Twist">Twist</label><input name="Twist" type="range" min="20" max="100"
-            value="20" id="twist-number"><br />
-            <label for="Roundness" id="label">Roundness</label><input name="Roundness" type="range" min="0"
-            max="10" value="0" step="1" id="roundness-number"><br/>
-             <!-- Checkbox -->
-        <input type="checkbox" id="myCheck" value="Star"><label>Star</label><br/><br/>
-</body>
+    <canvas id="myCanvas" resize></canvas>
+       <div class ="box">
+           <label for="Speed">Speed</label>
+           <input name="Speed" type="range" min="1" max="15" value="1" class="slider"
+            id="speed-number"><br/><br/>
+        </div>
+        <div class ="box1">
+            <label for="Twist">Twist</label>
+            <input name="Twist" type="range" min="20" max="50"
+            value="20" class="slider1" id="twist-number"><br/>
+        </div>
+        <div class ="box2">
+            <label for="Roundness" id="label">Roundness</label>
+            <input name="Roundness" type="range" min="0"
+            max="12" value="0" class="slider2" id="roundness-number"><br/>
+        </div>
+        <div class ="box3">
+            <label class="container">Change shape
+                <input type="checkbox" id="shape-box"><span class="checkmark"></span>
+            </label>
+        </div>
+    </body>
+</html>

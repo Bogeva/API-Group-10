@@ -13,7 +13,9 @@ var colors = ['#5942f4', '#a041f4', '#d63ff4', '#f23ad6', 'orange', 'white', 'gr
 //First loop
 for (var i = 0; i < amount; i++) {
 	//Measurements of star
-	var path = new Path.Star(mousePoint, 5, 10, 20);
+	var path = new Path.Star(mousePoint, 5, 15, 30);
+	//Roundness of star
+	//var path = new Path.Star(star, roundnessNumber);
 	//Amounts of colors
 	path.fillColor = colors[i % 7];
 	//Scale on canvas
@@ -33,11 +35,13 @@ function onMouseDown(event) {
 	amount = amount + 7;
 	for (var i = 0; i < amount; i++) {
 		//Measurements of star
-		var path = new Path.Star(mousePoint, 5, 10, 20);
+		var path = new Path.Star(mousePoint, 5, 15, 30);
+		//Roundness of star
+		//var path = new Path.Star(star, roundnessNumber);
 		//Amounts of colors
 		path.fillColor = colors[i % 7];
 		//Scale on canvas
-		var scale = (1 - i / amount) * 20;
+		var scale = (1 - i / amount) * 10;
 		path.scale(scale);
 	}
 	console.log(amount);
