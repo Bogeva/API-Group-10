@@ -2,11 +2,12 @@
 // http://park12.wakwak.com/~shp/lc/et/en_aics_script.html
 project.currentStyle = {
 	fillColor: 'black'
+	
 };
 
 var ballPositions = [[255, 129], [610, 73], [486, 363],
-	[117, 459], [484, 726], [843, 306], [789, 615], [1049, 82],
-	[1292, 428], [1117, 733], [1352, 86], [92, 798]];
+[117, 459], [484, 726], [843, 306], [789, 615], [1049, 82],
+[1292, 428], [1117, 733], [1352, 86], [92, 798]];
 
 var handle_len_rate = 2.4;
 var circlePaths = [];

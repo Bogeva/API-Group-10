@@ -1,5 +1,6 @@
 // kynd.info 2014
 
+//Original code from Paper.js exemple "Candy Crash"
 function Ball(r, p, v) {
 	this.radius = r;
 	this.point = p;
@@ -11,11 +12,13 @@ function Ball(r, p, v) {
 	this.sidePoints = [];
 	this.path = new Path({
 		fillColor: {
-			hue: Math.random() * 360,
+			hue: 204, //color changed from random to blue
 			saturation: 1,
-			brightness: 1
+			brightness: 1,
+		
 		},
 		blendMode: 'lighter'
+
 	});
 
 	for (var i = 0; i < this.numSegment; i ++) {
@@ -110,6 +113,7 @@ Ball.prototype = {
 	}
 };
 
+
 //--------------------- main ---------------------
 
 var balls = [];
@@ -134,3 +138,59 @@ function onFrame() {
 		balls[i].iterate();
 	}
 }
+
+//The following code has been added by Lin 
+//New balls added on click, background color changed on click 
+
+//Variables for random color (hex)
+var letters = "0123456789ABCDEF"; 
+
+//Click event listener added to click (code copied from "numBalls" above)
+document.addEventListener("click", function(){
+	var position2 = Point.random() * view.size;
+	var vector2 = new Point({
+		angle: 360 * Math.random(),
+		length: Math.random() * 10
+	});
+	var radius2 = Math.random() * 60 + 60;
+	balls.push(new Ball(radius2, position2, vector2));
+
+	//Resets color to # on click (hex)
+	var color = "#";
+	
+	//Generates random letter or number from the variable letters 
+	//In order to create hex color
+	//16 alternatives in "letters"
+	for(var i = 0; i < 6; i++) {
+		color+= letters[Math.floor(Math.random()*16)]
+	}; 
+
+	//Sets body background to the randomly generated color
+	document.body.style.background = color;
+
+	//Adds sound on click
+	var audio = new Audio('sound.mp3');
+	audio.play();
+		
+}); 
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
