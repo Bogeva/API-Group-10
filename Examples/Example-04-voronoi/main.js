@@ -5,13 +5,13 @@ var oldSize = view.size;
 var spotColor = new Color('rgb(2,30,2, 0.7)'); //color of cell
 var mousePos = view.center;
 var selected = false;
+//Variables for random color (hex)
+var letters = "0123456789ABCDEF"; //trying to apply the animation to randomly change color on click
+//Resets color to # on click (hex)
+var color = "#";
 
 onResize();
 
-function getRandomColor () {
-	var hex = Math.floor(Math.random() * 0xFFFFFF);
-	return "#" + ("000000" + hex.toString(16)).substr(-6);
-  } //trying to apply the animation to randomly change color on click
 
 function onMouseDown(event) {
 	sites.push(event.point);
@@ -82,6 +82,10 @@ function createPath(points, center) {
 	if (!selected) {
 		// path.fillColor = spotColor; 
 		path.fillColor = {hue: Math.random() * 360, saturation: 1, brightness: 1};
+		for(var i = 0; i < 6; i++) {
+			color+= letters[Math.floor(Math.random()*16)]
+		};
+	
 	} else {
 		path.fullySelected = selected;
 	}

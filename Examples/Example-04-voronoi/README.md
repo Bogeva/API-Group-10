@@ -1,3 +1,7 @@
-My changes: 
-size - changed column division 
-color - changed the spotColor to include opacity. On mouse point, the color will get darker and the cell breaks into smaller pieces.
+This project is called Voronoi and has been edited by Diana. 
+
+This PaperJS example is using paper methods to adjust columns and rows that create interactive cells. These cells change depending on the functions and events written. 
+
+This example of code is useful as it is interactive and could be used to represent a multitude of things. You could use this in a prototype to represent sound, movement, vibration, etc. 
+ 
+
