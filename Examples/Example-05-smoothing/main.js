@@ -59,11 +59,9 @@ function onMouseDown(event) {
 	//when mouse is clicked and held we want the 'mountains' to 
 	//change color 
 	path.fillColor = {
-		gradient: {
-			stops: [['#de6262', 0.3],['#ffb88c',0.5] ]
-		}, 
-		origin: [0,0],
-		destination: [0,1080]
+		hue: Math.random() * 360,
+		saturation: 0.4,
+		brightness: 1
 	}
 }
 
@@ -83,3 +81,7 @@ function onMouseUp(event){
 function onResize(event) {
 	initializePath();
 }
+
+//Adds sound on click
+var audio = new Audio('wind.mp3');
+audio.play();
