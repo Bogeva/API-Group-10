@@ -12,6 +12,9 @@ var color = "#";
 
 onResize();
 
+//Adds sound on click
+var audio = new Audio('disco.mp3');
+audio.play();
 
 function onMouseDown(event) {
 	sites.push(event.point);
