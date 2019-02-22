@@ -5,3 +5,5 @@ To use this project the user has to move the mouse around, this will make the fi
 Some of the code in this project has been borrowed from example one “Meta Balls. 
 
 This example can be used to prototype a game. 
+
+Source: http://paperjs.org/examples/future-splash/

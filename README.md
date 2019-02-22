@@ -11,3 +11,5 @@ Klara - Rounded rectangles (example 3)
 Diana - Voronoi (example 4)
 Lin - Candy Crush (example 6) and Future Splash (exemple 2)
 Snezhana - Smoothing (example 5)
+
+Source: http://paperjs.org/

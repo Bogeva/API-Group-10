@@ -8,3 +8,5 @@ For this example specifically, you need to include the link to the example javas
 	<script type="text/javascript" src="/Examples/Example-04-voronoi/rhill-voronoi-core.js"></script>
 
 This is not required in all paperjs examples, so you must look at the source code on paperjs.org/examples in order to confirm if it has been added there.
+
+Source: http://paperjs.org/examples/voronoi/
