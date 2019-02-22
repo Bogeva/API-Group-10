@@ -34,15 +34,15 @@ var largeCircle = new Path.Circle({
 
 //DELETE THIS BEFORE HANDIN?
 //Second circle that follows mouse added
-var largeCircle2 = new Path.Circle({
-	center: [676, 433],
-	radius: 50
+//var largeCircle2 = new Path.Circle({
+	//center: [676, 433],
+	//radius: 50
 	
-});
+//});
 
 circlePaths.push(largeCircle);
 //DELETE THIS BEFORE HAND IN
-circlePaths.push(largeCircle2);
+//circlePaths.push(largeCircle2);
 
 
 
